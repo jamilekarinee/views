@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro de Gêneros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <ul>
+      <li><a href="/generos/listar">Gêneros Cadastrados</a></li>
+    </ul>
+    
+    <h1>Cadastro de Gêneros</h1>
+    <form method="post" action="/generos/add" class="row g-3">
+      <div class="col-md-6">
+        <label for="inputnome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputNome" name="nome" placeholder="Digite aqui o nome do Gênero">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="reset" class="btn btn-primary">Cancelar</button>
+      </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>

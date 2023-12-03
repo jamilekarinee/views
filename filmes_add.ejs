@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cadastro de Filmes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function getGenero() {      /* Função para obter as nacionalidades da rota*/          
+          $.ajax({            
+            url: "/generos/listagem", /* Chamada da rota*/
+            type: "GET",                   /* Método usado pela rota*/
+            dataType: "json",              /* Tipo de dado retornado pela rota*/
+            success: function (res) {      /* Inclui os elementos do <select>*/
+              $("#inputgenero").html("<option selected>(Informe)</option>");
+              $.each(res.resultado, function (key, value) {
+                $("#inputgenero").append(                /* Inclui os elementos vindos da rota */
+                  "<option value=" + value.id_genero + ">" + value.nome_genero + "</option>"
+                );
+              });
+            },
+          });
+        }
+        getGenero();
+      }); 
+  </script>
+
+  <script>
+      $(document).ready(function () {
+        function getProdutoras() {      /* Função para obter as nacionalidades da rota*/          
+          $.ajax({            
+            url: "/produtoras/listagem", /* Chamada da rota*/
+            type: "GET",                   /* Método usado pela rota*/
+            dataType: "json",              /* Tipo de dado retornado pela rota*/
+            success: function (res) {      /* Inclui os elementos do <select>*/
+              $("#inputprodutoras").html("<option selected>(Informe)</option>");
+              $.each(res.resultado, function (key, value) {
+                $("#inputprodutoras").append(                /* Inclui os elementos vindos da rota */
+                  "<option value=" + value.id_produtora + ">" + value.nome_produtora + "</option>"
+                );
+              });
+            },
+          });
+        }
+        getProdutoras();
+      });
+  </script>
+  </head>
+
+  <body>
+    <ul>
+      <li><a href="/filmes/listar">Filmes Cadastrados</a></li>
+    </ul>
+    
+    <h1>Cadastro de Filmes</h1>
+    <form method="post" action="/filmes/add" class="row g-3">
+      <div class="col-md-6">
+        <label for="inputnome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputNome" name="nome" placeholder="Escreva aqui o nome do Filme">
+      </div>
+      <div class="col-md-6">
+        <label for="inputprodutoras" class="form-label">Produtoras</label>
+        <select id="inputprodutoras" class="form-select" name="produtora">
+          <option selected>(Informe)</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="inputhoras" class="form-label">Horas Totais</label>
+        <input type="text" class="form-control" id="inputNome" name="horas" placeholder="Coloque aqui as horas totais do Filme">
+      </div>
+      <div class="col-md-6">
+        <label for="inputgenero" class="form-label">Gênero</label>
+        <select id="inputgenero" class="form-select" name="genero">
+          <option selected>(Informe)</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
